@@ -1,0 +1,8 @@
+.circle-chart__circle {
+	transform: rotate(-90deg);
+	transform-origin: center;
+}
+
+.circle-chart__info {
+	opacity: 1;
+}
