@@ -13,7 +13,7 @@ const HomePage = () => {
   return (
     <>
       <HeroSlider />
-      <Container sx={{ minWidth: "1348px" }}>
+      <Container maxWidth="lg">
         <SectionList data={trendingMoviesData} title="Trending Movies" />
         <SectionList data={topRatedMovies} title="Top Rated Movies" />
         <SectionList data={trendingTvData} title="Trending TV" />

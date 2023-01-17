@@ -1,11 +1,10 @@
-import React from "react";
-import "keen-slider/keen-slider.min.css";
+import React, { useState } from "react";
 import { Banner, FeaturedContainer } from "./styles";
-import { Box, Button, TextField, Typography } from "@mui/material";
-import { useRouter } from "next/router";
+import { Box, TextField, Typography } from "@mui/material";
+import SearchButton from "./SearchButton";
 
 export default function HeroSlider() {
-  const router = useRouter();
+  const [searchData, setData] = useState("");
   return (
     <FeaturedContainer>
       <Banner
@@ -44,6 +43,7 @@ export default function HeroSlider() {
 
         <Box mt="60px" mx="auto" maxWidth="1300px">
           <TextField
+            onChange={(e) => setData(e.target.value)}
             sx={{
               "& fieldset": { border: "none" },
             }}
@@ -69,32 +69,7 @@ export default function HeroSlider() {
                 },
               },
               spellCheck: false,
-              endAdornment: (
-                <Button
-                  onClick={() =>
-                    router.push({
-                      pathname: "/search/[search]",
-                      query: { search: "this is search content" },
-                    })
-                  }
-                  sx={{
-                    background:
-                      "linear-gradient(to right, rgba(30,213,169, 1) 0%, rgba(1,180,228, 1) 100%)",
-                    borderRadius: 50,
-                    minHeight: "40px",
-                    paddingX: "26px",
-                    paddingY: "10px",
-                    fontWeight: "700",
-                    textTransform: "capitalize",
-                    color: "white",
-                    "&:hover": {
-                      color: "black",
-                    },
-                  }}
-                >
-                  Search
-                </Button>
-              ),
+              endAdornment: <SearchButton search={searchData} />,
             }}
           />
         </Box>

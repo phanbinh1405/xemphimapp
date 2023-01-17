@@ -3,6 +3,7 @@ import { useKeenSlider } from "keen-slider/react";
 import React from "react";
 import { TrendingItem } from "../../constants/types/trendingType";
 import Item from "../sectionItem";
+import "keen-slider/keen-slider.min.css";
 
 interface SectionListProps {
   title: string;
