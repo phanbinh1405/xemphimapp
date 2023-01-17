@@ -4,6 +4,9 @@ import { ThemeProvider } from "@mui/material";
 import UserLayout from "../layout/UserLayout";
 import { theme } from "../theme";
 import Head from "next/head";
+import { SWRConfig } from "swr";
+import axiosInstance from "../utils/fetchWithTimeOut";
+import camelcaseKeys from "camelcase-keys";
 
 export default function App({ Component, pageProps }: AppProps) {
 	return (
@@ -12,9 +15,16 @@ export default function App({ Component, pageProps }: AppProps) {
 				<meta name='viewport' content='width=device-width, initial-scale=1' />
 			</Head>
 			<ThemeProvider theme={theme}>
-				<UserLayout>
-					<Component {...pageProps} />
-				</UserLayout>
+				<SWRConfig
+					value={{
+						fetcher: (url) =>
+							axiosInstance({ url }).then((res: any) => camelcaseKeys(res.data.results)),
+					}}
+				>
+					<UserLayout>
+						<Component {...pageProps} />
+					</UserLayout>
+				</SWRConfig>
 			</ThemeProvider>
 		</>
 	);
