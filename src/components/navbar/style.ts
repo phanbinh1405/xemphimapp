@@ -1,8 +1,8 @@
-import styled from "@emotion/styled";
-import Image from "next/image";
+import styled from '@emotion/styled'
+import Image from 'next/image'
 
 interface NavBarType {
-  isScrolled: boolean;
+  isScrolled: boolean
 }
 
 export const NavBar = styled.div<NavBarType>`
@@ -13,10 +13,8 @@ export const NavBar = styled.div<NavBarType>`
   top: 0;
   z-index: 999;
   background: ${({ isScrolled }) =>
-    isScrolled
-      ? `#032541`
-      : `linear-gradient(to top, transparent 0%, rgb(0, 0, 0, 0.3) 50%)`};
-`;
+    isScrolled ? `#032541` : `linear-gradient(to top, transparent 0%, rgb(0, 0, 0, 0.3) 50%)`};
+`
 
 export const NavBarInnerContainer = styled.div`
   padding: 0 50px;
@@ -24,11 +22,11 @@ export const NavBarInnerContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   height: 64px;
-`;
+`
 
 export const NavBarLogo = styled(Image)`
   margin-right: 40px;
-`;
+`
 
 export const LeftContainer = styled.div`
   display: flex;
@@ -38,12 +36,12 @@ export const LeftContainer = styled.div`
     margin-right: 20px;
     cursor: pointer;
   }
-`;
+`
 
 export const RightContainer = styled.div`
   display: flex;
   align-items: center;
-`;
+`
 
 export const Profile = styled.div`
   &:hover {
@@ -53,10 +51,10 @@ export const Profile = styled.div`
       position: absolute;
     }
   }
-`;
+`
 
 export const OptionsContainer = styled.div`
   display: none;
   background-color: #032541;
   border-radius: 5px;
-`;
+`

@@ -1,12 +1,12 @@
-import { createTheme } from "@mui/material";
+import { createTheme } from '@mui/material'
 
 const theme = createTheme({
   typography: {
-    fontFamily: ["Source Sans Pro", "serif"].join(","),
+    fontFamily: ['Source Sans Pro', 'serif'].join(','),
   },
   palette: {
     primary: {
-      main: "#032541",
+      main: '#032541',
     },
   },
   breakpoints: {
@@ -18,6 +18,6 @@ const theme = createTheme({
       xl: 1536,
     },
   },
-});
+})
 
-export { theme };
+export { theme }

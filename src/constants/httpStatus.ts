@@ -17,4 +17,4 @@ export const HttpStatus = {
   SERVICE_UNAVAILABLE: 503,
   // OTHER
   OTHER: -1,
-};
+}

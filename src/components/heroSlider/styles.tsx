@@ -1,15 +1,15 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
 
 const FeaturedContainer = styled.div`
   /* height: 100vh; */
   position: relative;
-`;
+`
 
 const Banner = styled.img`
   width: 100%;
   object-fit: contain;
   object-position: center;
-`;
+`
 
 const Infor = styled.div`
   width: 35%;
@@ -22,11 +22,11 @@ const Infor = styled.div`
   & > .desc {
     margin: 20px 0;
   }
-`;
+`
 
 const ButtonContainer = styled.div`
   display: flex;
-`;
+`
 
 const Button = styled.button`
   padding: 10px 20px;
@@ -49,6 +49,6 @@ const Button = styled.button`
     background-color: gray;
     color: white;
   }
-`;
+`
 
-export { FeaturedContainer, Banner, Infor, Button, ButtonContainer };
+export { FeaturedContainer, Banner, Infor, Button, ButtonContainer }
