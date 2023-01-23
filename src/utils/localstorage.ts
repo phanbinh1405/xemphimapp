@@ -11,7 +11,7 @@ export const isLocalStorageAccess = () => {
 export const getToken = () => {
   // @ts-ignore
   return (
-    isLocalStorageAccess() && JSON.parse(window.localStorage.getItem(LocalStorageKeys.LOCAL_STORAGE_USER_DATA) || null)
+    isLocalStorageAccess() && JSON.parse(window.localStorage.getItem(LocalStorageKeys.LOCAL_STORAGE_USER_DATA) || '')
   )
 }
 
