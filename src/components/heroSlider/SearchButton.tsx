@@ -11,10 +11,11 @@ function SearchButton({ search }: SearchButtonProps) {
   return (
     <Button
       onClick={() =>
-        router.push({
-          pathname: '/search/[search]',
-          query: { search },
-        })
+        search
+          ? router.push({
+              pathname: `/search/${search}`,
+            })
+          : router.push('/search')
       }
       sx={{
         background: 'linear-gradient(to right, rgba(30,213,169, 1) 0%, rgba(1,180,228, 1) 100%)',

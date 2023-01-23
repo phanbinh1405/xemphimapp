@@ -1,4 +1,5 @@
-import { Box, Button, Container, Grid, Typography, useTheme } from '@mui/material'
+import { Box, Button, Container, Typography, useTheme } from '@mui/material'
+import Grid from '@mui/material/Unstable_Grid2'
 import Image from 'next/image'
 import React from 'react'
 import { MenuFooter } from './styles'

@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import Image from 'next/image'
+import Link from 'next/link'
 
 interface NavBarType {
   isScrolled: boolean
@@ -31,10 +32,15 @@ export const NavBarLogo = styled(Image)`
 export const LeftContainer = styled.div`
   display: flex;
   align-items: center;
+  color: #fff;
+`
 
-  & > span {
-    margin-right: 20px;
-    cursor: pointer;
+export const MenuItem = styled(Link)`
+  margin-right: 20px;
+  color: inherit;
+  text-decoration: none;
+  &:hover {
+    color: #ff0000;
   }
 `
 

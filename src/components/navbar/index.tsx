@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import {
   LeftContainer,
+  MenuItem,
   NavBar,
   NavBarInnerContainer,
   NavBarLogo,
@@ -14,6 +15,7 @@ import {
 } from './style'
 import { useRouter } from 'next/router'
 import { router } from 'next/client'
+import Link from 'next/link'
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -34,12 +36,12 @@ const Navbar = () => {
     <NavBar isScrolled={router.asPath !== '/' || isScrolled}>
       <NavBarInnerContainer>
         <LeftContainer>
-          <NavBarLogo src='/logo-full.png' alt='' width={100} height={25} />
-          <span>Homepage</span>
-          <span>Series</span>
-          <span>Movies</span>
-          <span>New and Popular</span>
-          <span>My List</span>
+          <Link href={'/'} style={{ display: 'inline-flex' }}>
+            <NavBarLogo src='/logo-full.png' alt='' width={100} height={25} />
+          </Link>
+          <MenuItem href='/'>Homepage</MenuItem>
+          <MenuItem href='/'>TV Series</MenuItem>
+          <MenuItem href='/'>Movies</MenuItem>
         </LeftContainer>
         <RightContainer>
           <SearchIcon className='icon' />

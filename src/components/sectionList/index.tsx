@@ -1,4 +1,4 @@
-import { Box } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import { useKeenSlider } from 'keen-slider/react'
 import React from 'react'
 import { TrendingItem } from '../../constants/types/trendingType'
@@ -8,9 +8,10 @@ import 'keen-slider/keen-slider.min.css'
 interface SectionListProps {
   title: string
   data: TrendingItem[]
+  noData?: string
 }
 
-function SectionList({ title = `What's Popular`, data = [] }: SectionListProps) {
+function SectionList({ title = `What's Popular`, data = [], noData }: SectionListProps) {
   const [ref] = useKeenSlider<HTMLDivElement>({
     breakpoints: {
       '(min-width: 400px)': {
@@ -22,6 +23,7 @@ function SectionList({ title = `What's Popular`, data = [] }: SectionListProps) 
     },
     slides: { perView: 1 },
   })
+
   return (
     <Box style={{ paddingTop: 30 }}>
       <Box
@@ -40,8 +42,9 @@ function SectionList({ title = `What's Popular`, data = [] }: SectionListProps) 
           </Box>
         ) : null}
       </Box>
+      {noData && <Typography variant='body1'>{noData}</Typography>}
     </Box>
   )
 }
 
-export default SectionList
+export default React.memo(SectionList)

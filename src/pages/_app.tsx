@@ -17,7 +17,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <ThemeProvider theme={theme}>
         <SWRConfig
           value={{
-            fetcher: (url) => axiosInstance({ url }).then((res: any) => camelcaseKeys(res.data.results)),
+            fetcher: (url) => axiosInstance({ url }).then((res: any) => camelcaseKeys(res.data)),
           }}
         >
           <UserLayout>
