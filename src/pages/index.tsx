@@ -4,6 +4,7 @@ import HeroSlider from '../components/heroSlider'
 import SectionList from '../components/sectionList'
 import { Container } from '@mui/system'
 import camelcaseKeys from 'camelcase-keys'
+import Head from 'next/head'
 
 const HomePage = () => {
   const { data: trendingMoviesData } = useSWR('trending/movie/day')
@@ -13,12 +14,15 @@ const HomePage = () => {
 
   return (
     <>
+      <Head>
+        <title>The Movie Homepage</title>
+      </Head>
       <HeroSlider />
       <Container maxWidth='lg'>
         <SectionList data={camelcaseKeys(trendingMoviesData?.results)} title='Trending Movies' />
-        <SectionList data={camelcaseKeys(topRatedMovies?.results)} title='Top Rated Movies' />
+        <SectionList data={camelcaseKeys(topRatedMovies?.results)} title='Top Rated Movies' path={'movie'} />
         <SectionList data={camelcaseKeys(trendingTvData?.results)} title='Trending TV' />
-        <SectionList data={camelcaseKeys(topRatedTv?.results)} title='Top Rated TV' />
+        <SectionList data={camelcaseKeys(topRatedTv?.results)} title='Top Rated TV' path={'tv'} />
       </Container>
     </>
   )

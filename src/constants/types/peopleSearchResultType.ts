@@ -11,8 +11,8 @@ export interface PeopleSearchResult {
   original_title?: string
   original_name?: string
   release_date?: string
-  first_air_date?:string
-  overview?:string
+  first_air_date?: string
+  overview?: string
 }
 
 export interface KnownFor {

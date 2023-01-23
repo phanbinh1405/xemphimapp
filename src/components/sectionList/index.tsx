@@ -9,9 +9,10 @@ interface SectionListProps {
   title: string
   data: TrendingItem[]
   noData?: string
+  path?: string
 }
 
-function SectionList({ title = `What's Popular`, data = [], noData }: SectionListProps) {
+function SectionList({ title = `What's Popular`, data = [], noData, path }: SectionListProps) {
   const [ref] = useKeenSlider<HTMLDivElement>({
     breakpoints: {
       '(min-width: 400px)': {
@@ -37,7 +38,7 @@ function SectionList({ title = `What's Popular`, data = [], noData }: SectionLis
         {data && data.length > 0 ? (
           <Box ref={ref} className='keen-slider' pb={2.5}>
             {data.map((item) => {
-              return <Item key={item.id} info={item} />
+              return <Item key={item.id} info={item} path={path} />
             })}
           </Box>
         ) : null}

@@ -13,6 +13,7 @@ export interface TvSearchResult {
   name: string
   original_name: string
   original_title?: string
-  release_date?:string
-  known_for?:any
+  release_date?: string
+  known_for?: any
+  profile_path?: string
 }

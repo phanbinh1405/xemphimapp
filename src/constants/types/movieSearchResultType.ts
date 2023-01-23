@@ -19,4 +19,5 @@ export interface MovieSearchResult {
   original_title?: string
   video?: boolean
   known_for?: any
+  profile_path?: string
 }

@@ -49,7 +49,7 @@ const Video = ({ video }: { video: VideoType }) => {
   }, [])
   return (
     <Box mb={3}>
-      <Typography variant='body1' fontSize='18px' fontWeight='700'>
+      <Typography variant='body1' fontSize='18px' fontWeight='700' textTransform='capitalize'>
         {video?.name}
       </Typography>
       <iframe

@@ -12,9 +12,10 @@ import Link from 'next/link'
 
 interface ItemProp {
   info: TrendingItem
+  path?: string
 }
 
-function Item({ info }: ItemProp) {
+function Item({ info, path }: ItemProp) {
   const title = info.name || info.title || ''
   return (
     <Card
@@ -26,7 +27,7 @@ function Item({ info }: ItemProp) {
       }}
       className='keen-slider__slide'
     >
-      <Link href={`/detail/${info.mediaType}/${info.id}`} style={{ textDecoration: 'none', color: '#333' }}>
+      <Link href={`/detail/${path || info.mediaType}/${info.id}`} style={{ textDecoration: 'none', color: '#333' }}>
         <CardActionArea>
           <div style={{ position: 'relative' }}>
             <CardMedia
