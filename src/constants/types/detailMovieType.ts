@@ -25,6 +25,7 @@ export interface DetailMovie {
   voteAverage: number
   voteCount: number
   name?: string
+  firstAirDate?: string
 }
 
 export interface BelongsToCollection {

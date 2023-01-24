@@ -5,7 +5,7 @@
             <stop stop-color="#C0FECF" stop-opacity="0" offset="100%"></stop>
         </linearGradient>
     </defs>
-    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g id="Symbols" stroke="none" strokeWidth="1" fill="none" fill-rule="evenodd">
         <g id="LInes" fill="url(#linearGradient-1)">
             <g id="Group-2">
                 <rect id="Rectangle" x="190" y="0" width="4" height="137" rx="2"></rect>

@@ -18,7 +18,6 @@ export interface CastType {
 
 function CastsList({ type, id }: { type?: string; id?: string }) {
   const { data } = useSWR(`${type}/${id}/credits`)
-  console.log(data)
   return (
     <>
       <Stack direction='row' spacing={3}>

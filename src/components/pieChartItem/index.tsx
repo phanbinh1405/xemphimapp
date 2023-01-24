@@ -20,7 +20,7 @@ function Chart({ voteAverage }: ChartProps) {
       <circle
         className='circle-chart__background'
         stroke='#efefef'
-        stroke-width='2'
+        strokeWidth='2'
         fill='#081c22'
         cx='16.91549431'
         cy='16.91549431'
@@ -29,9 +29,9 @@ function Chart({ voteAverage }: ChartProps) {
       <circle
         className={styles['circle-chart__circle']}
         stroke={color}
-        stroke-width='2'
-        stroke-dasharray={`${point}, 100`}
-        stroke-linecap='round'
+        strokeWidth='2'
+        strokeDasharray={`${point}, 100`}
+        strokeLinecap='round'
         fill='none'
         cx='16.91549431'
         cy='16.91549431'
@@ -44,9 +44,9 @@ function Chart({ voteAverage }: ChartProps) {
               className='circle-chart__percent'
               x='15'
               y='18'
-              alignment-baseline='central'
-              text-anchor='middle'
-              font-size='13'
+              alignmentBaseline='central'
+              textAnchor='middle'
+              fontSize='13'
               fill='white'
               fontWeight='600'
             >
@@ -56,9 +56,9 @@ function Chart({ voteAverage }: ChartProps) {
               className='circle-chart__percent'
               x='25'
               y='15'
-              alignment-baseline='central'
-              text-anchor='middle'
-              font-size='7'
+              alignmentBaseline='central'
+              textAnchor='middle'
+              fontSize='7'
               fill='white'
             >
               %
@@ -69,9 +69,9 @@ function Chart({ voteAverage }: ChartProps) {
             className='circle-chart__percent'
             x='17'
             y='17'
-            alignment-baseline='central'
-            text-anchor='middle'
-            font-size='13'
+            alignmentBaseline='central'
+            textAnchor='middle'
+            fontSize='13'
             fill='white'
             fontWeight='600'
           >

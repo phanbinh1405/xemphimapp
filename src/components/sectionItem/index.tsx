@@ -12,10 +12,11 @@ import Link from 'next/link'
 
 interface ItemProp {
   info: TrendingItem
-  path?: string
+  path?: string | undefined | string[]
+  height?: number
 }
 
-function Item({ info, path }: ItemProp) {
+function Item({ info, path, height = 225 }: ItemProp) {
   const title = info.name || info.title || ''
   return (
     <Card
@@ -33,7 +34,7 @@ function Item({ info, path }: ItemProp) {
             <CardMedia
               style={{ borderRadius: '8px' }}
               component='img'
-              height='225'
+              height={`${height}`}
               image={`https://www.themoviedb.org/t/p/w220_and_h330_face${info.posterPath}`}
               alt='green iguana'
             />

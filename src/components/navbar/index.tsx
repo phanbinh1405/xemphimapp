@@ -40,8 +40,8 @@ const Navbar = () => {
             <NavBarLogo src='/logo-full.png' alt='' width={100} height={25} />
           </Link>
           <MenuItem href='/'>Homepage</MenuItem>
-          <MenuItem href='/'>TV Series</MenuItem>
-          <MenuItem href='/'>Movies</MenuItem>
+          <MenuItem href='/catalog/tv'>TV Series</MenuItem>
+          <MenuItem href='/catalog/movie'>Movies</MenuItem>
         </LeftContainer>
         <RightContainer>
           <SearchIcon className='icon' />
