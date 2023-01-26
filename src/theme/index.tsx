@@ -16,6 +16,10 @@ const theme = createTheme({
     primary: {
       main: '#032541',
     },
+    common: {
+      black: '#000',
+      white: '#FFF',
+    },
   },
   breakpoints: {
     values: {
@@ -24,6 +28,15 @@ const theme = createTheme({
       md: 900,
       lg: 1348,
       xl: 1536,
+    },
+  },
+  components: {
+    MuiTooltip: {
+      styleOverrides: {
+        tooltip: {
+          fontSize: '0.8rem',
+        },
+      },
     },
   },
 })

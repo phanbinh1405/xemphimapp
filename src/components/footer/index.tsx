@@ -1,11 +1,13 @@
 import { Box, Button, Container, Typography, useTheme } from '@mui/material'
 import Grid from '@mui/material/Unstable_Grid2'
 import Image from 'next/image'
-import React from 'react'
+import React, { useContext } from 'react'
+import { AuthContext } from '../../context/AuthContext'
 import { MenuFooter } from './styles'
 
 function Footer() {
   const theme = useTheme()
+  const { profile } = useContext(AuthContext)
   return (
     <Box bgcolor={theme.palette.primary.main} component='div' mt='20px'>
       <Container maxWidth='md'>
@@ -24,7 +26,7 @@ function Footer() {
                 },
               }}
             >
-              Hi Phan Binh!
+              {`Hi ${profile?.name}!`}
             </Button>
           </Grid>
           <Grid xs={2}>

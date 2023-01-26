@@ -7,6 +7,7 @@ const THE_MOVIE_DB_API = 'https://api.themoviedb.org/3/'
 const axiosInstance: any = axios.create({
   baseURL: THE_MOVIE_DB_API,
   timeout: 20000,
+  headers: { 'Content-Type': 'application/json' },
 })
 
 axiosInstance.interceptors.request.use((config: AxiosRequestConfig) => {

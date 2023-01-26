@@ -1,7 +1,7 @@
 import { Box, Container, Pagination, Stack, TextField } from '@mui/material'
 import Grid from '@mui/material/Unstable_Grid2'
 import { useRouter } from 'next/router'
-import React, { MouseEvent, useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import useSWR from 'swr'
 import { Search } from '@mui/icons-material'
 import Link from 'next/link'
@@ -137,7 +137,11 @@ function SearchResultsView() {
                         <ResultItem key={option.id}>
                           <Link
                             className='search-result'
-                            style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}
+                            style={{
+                              textDecoration: 'none',
+                              color: 'inherit',
+                              display: 'block',
+                            }}
                             href={`/search/${option.name}`}
                           >
                             {option.name}

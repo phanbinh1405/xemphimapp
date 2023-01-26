@@ -7,10 +7,7 @@ export default function HeroSlider() {
   const [searchData, setData] = useState('')
   return (
     <FeaturedContainer>
-      <Banner
-        src={`https://image.tmdb.org/t/p/w1920_and_h600_multi_faces_filter(duotone,00192f,00baff)/fgYfch0MGfNEpgzPst49ThKUqA4.jpg`}
-        alt=''
-      />
+      <Banner src={`/banner.jpg`} alt='banner' />
 
       <Box
         mx='auto'
@@ -24,10 +21,10 @@ export default function HeroSlider() {
           maxWidth: '1300px',
         }}
       >
-        <Typography variant='h2' color='inherit' fontSize='48px' fontWeight='700'>
+        <Typography variant='h2' color='inherit' fontSize='3rem' fontWeight='700'>
           Welcome.
         </Typography>
-        <Typography variant='h3' color='inherit' fontSize='32px' fontWeight='600'>
+        <Typography variant='h3' color='inherit' fontSize='2rem' fontWeight='600'>
           Millions of movies, TV shows and people to discover. Explore now.
         </Typography>
 
