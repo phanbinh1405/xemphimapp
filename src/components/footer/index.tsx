@@ -12,8 +12,8 @@ function Footer() {
     <Box bgcolor={theme.palette.primary.main} component='div' mt='20px'>
       <Container maxWidth='md'>
         <Grid container spacing={2} color='#fff' py={10}>
-          <Grid xs={4} sx={{ textAlign: 'center' }}>
-            <Image src='/logo-full.png' width={250} height={100} alt='footer-logo' />
+          {/* <Grid xs={4} sx={{ textAlign: 'center' }}>
+            <Image src='/logo-full.png' width='100%' height={100} alt='footer-logo' />
             <Button
               variant='contained'
               sx={{
@@ -28,8 +28,8 @@ function Footer() {
             >
               {`Hi ${profile?.name}!`}
             </Button>
-          </Grid>
-          <Grid xs={2}>
+          </Grid> */}
+          <Grid xs={6} md={3}>
             <Typography variant='h3' fontSize='20px' fontWeight='700' mb={1}>
               THE BASICS
             </Typography>
@@ -41,7 +41,7 @@ function Footer() {
               <li>System Status</li>
             </MenuFooter>
           </Grid>
-          <Grid xs={2}>
+          <Grid xs={6} md={3}>
             <Typography variant='h3' fontSize='20px' fontWeight='700' mb={1}>
               GET INVOLVED
             </Typography>
@@ -51,7 +51,7 @@ function Footer() {
               <li>Add New TV Show</li>
             </MenuFooter>
           </Grid>
-          <Grid xs={2}>
+          <Grid xs={6} md={3}>
             <Typography variant='h3' fontSize='20px' fontWeight='700' mb={1}>
               COMMUNITY
             </Typography>
@@ -62,7 +62,7 @@ function Footer() {
               <li>Twitter</li>
             </MenuFooter>
           </Grid>
-          <Grid xs={2}>
+          <Grid xs={6} md={3}>
             <Typography variant='h3' fontSize='20px' fontWeight='700' mb={1}>
               LEGAL
             </Typography>

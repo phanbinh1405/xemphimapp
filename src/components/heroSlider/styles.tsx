@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { Typography } from '@mui/material'
 
 const FeaturedContainer = styled.div`
   /* height: 100vh; */
@@ -7,8 +8,26 @@ const FeaturedContainer = styled.div`
 
 const Banner = styled.img`
   width: 100%;
-  object-fit: contain;
   object-position: center;
+  object-fit: contain;
+
+  @media (max-width: 480px) {
+    object-fit: cover;
+    height: 50vh;
+  }
+`
+
+export const BiggestTitle = styled(Typography)`
+  font-size: 3rem;
+  @media (max-width: 480px) {
+    font-size: 2.5rem;
+  }
+`
+export const LittleTitle = styled(Typography)`
+  font-size: 2rem;
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+  }
 `
 
 const Infor = styled.div`

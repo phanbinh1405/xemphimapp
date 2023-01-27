@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Banner, FeaturedContainer } from './styles'
+import { Banner, BiggestTitle, FeaturedContainer, LittleTitle } from './styles'
 import { Box, TextField, Typography } from '@mui/material'
 import SearchButton from './SearchButton'
 
@@ -19,14 +19,15 @@ export default function HeroSlider() {
           transform: 'translateY(-50%)',
           color: '#fff',
           maxWidth: '1300px',
+          paddingInline: '24px',
         }}
       >
-        <Typography variant='h2' color='inherit' fontSize='3rem' fontWeight='700'>
+        <BiggestTitle variant='h2' color='inherit' fontWeight='700'>
           Welcome.
-        </Typography>
-        <Typography variant='h3' color='inherit' fontSize='2rem' fontWeight='600'>
+        </BiggestTitle>
+        <LittleTitle variant='h3' color='inherit' fontWeight='600'>
           Millions of movies, TV shows and people to discover. Explore now.
-        </Typography>
+        </LittleTitle>
 
         <Box mt='60px' mx='auto' maxWidth='1300px'>
           <TextField

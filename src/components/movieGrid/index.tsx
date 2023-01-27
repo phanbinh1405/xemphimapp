@@ -24,7 +24,7 @@ function MovieGrid({ type }: { type: string | undefined | string[] }) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, page])
-  console.log(movieData)
+  
   return (
     <InfiniteScroll
       dataLength={movieData?.length || 0}
@@ -44,7 +44,7 @@ function MovieGrid({ type }: { type: string | undefined | string[] }) {
       <Grid container spacing={3.5}>
         {movieData?.map((movie: TrendingItem) => {
           return (
-            <Grid key={movie?.id} xs={2.4}>
+            <Grid key={movie?.id} xs={6} md={3} lg={2.4}>
               <Item info={camelcaseKeys(movie)} height={330} path={type} />
             </Grid>
           )

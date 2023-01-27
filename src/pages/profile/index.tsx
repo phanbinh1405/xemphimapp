@@ -13,6 +13,8 @@ function ProfileView() {
 
   const { data: favoriteMovies, isLoading: isMovieLoading } = useSWR(`account/${profile?.id}/favorite/movies`)
   const { data: favoriteTv, isLoading: isTvLoading } = useSWR(`account/${profile?.id}/favorite/tv`)
+  const { data: movieWatchlist, isLoading: isMovieWatchlistLoading } = useSWR(`account/${profile?.id}/watchlist/movies`)
+  const { data: tvShowWatchlist, isLoading: isTvWatchlistLoading } = useSWR(`account/${profile?.id}/watchlist/tv`)
   return (
     <Box mt='64px'>
       <Box component='div' sx={{ background: 'rgb(3, 37, 65)' }}>
@@ -45,12 +47,31 @@ function ProfileView() {
           }
         />
         <SectionList
+          title='Movies Watchlist'
+          data={camelcaseKeys(movieWatchlist?.results)}
+          path='movie'
+          noData={
+            !isMovieWatchlistLoading && movieWatchlist?.results.length <= 0
+              ? `You haven't added any movies watchlist.`
+              : ''
+          }
+        />
+        <SectionList
           title='Favorite Tv Shows'
           data={camelcaseKeys(favoriteTv?.results)}
           path='movie'
           noData={!isTvLoading && favoriteTv?.results.length <= 0 ? `You haven't added any favorite TV shows.` : ''}
         />
-        {/* <SectionList title='Rated Movies' data={camelcaseKeys(favoriteMovies?.results)} path='movie' /> */}
+        <SectionList
+          title='Tv Shows Watchlist'
+          data={camelcaseKeys(tvShowWatchlist?.results)}
+          path='movie'
+          noData={
+            !isTvWatchlistLoading && tvShowWatchlist?.results.length <= 0
+              ? `You haven't added any to Tv Shows Watchlist.`
+              : ''
+          }
+        />
       </Container>
     </Box>
   )

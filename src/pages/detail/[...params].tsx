@@ -1,4 +1,5 @@
 import { Box, Container, Stack, Typography } from '@mui/material'
+import Grid from '@mui/material/Unstable_Grid2'
 import camelcaseKeys from 'camelcase-keys'
 import moment from 'moment'
 import Head from 'next/head'
@@ -37,7 +38,7 @@ function FilmDetailView() {
         <title>{data?.originalTitle || data?.name}</title>
       </Head>
 
-      <Box pt='64px'>
+      <Box mt='64px'>
         <Box
           component='div'
           sx={{
@@ -51,79 +52,83 @@ function FilmDetailView() {
             }}
           >
             <Container maxWidth='lg'>
-              <Stack direction='row' paddingY='30px' spacing={4} alignItems='center'>
-                <Image
-                  src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2${data?.posterPath}`}
-                  alt='poster'
-                  width={300}
-                  height={450}
-                  style={{ borderRadius: '8px', position: 'relative' }}
-                />
-                <Stack width='100%' color='#fff'>
-                  <Box component='div' mb={2}>
-                    <Typography variant='h2' color='#fff' fontSize='2.5rem'>
-                      {data?.originalTitle || data?.name}
-                      <span style={{ fontWeight: '400', opacity: 0.8 }}>{`(${moment(
-                        data?.releaseDate || data?.firstAirDate
-                      ).format('YYYY')})`}</span>
-                    </Typography>
+              <Grid spacing={4} container py={2} alignItems='center'>
+                <Grid xs={12} md={3} textAlign='center'>
+                  <Image
+                    src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2${data?.posterPath}`}
+                    alt='poster'
+                    width={300}
+                    height={450}
+                    style={{ borderRadius: '8px', position: 'relative' }}
+                  />
+                </Grid>
+                <Grid xs={12} md={9}>
+                  <Stack width='100%' color='#fff'>
+                    <Box component='div' mb={2}>
+                      <Typography variant='h2' color='#fff' fontSize='2.5rem'>
+                        {data?.originalTitle || data?.name}
+                        <span style={{ fontWeight: '400', opacity: 0.8 }}>{`(${moment(
+                          data?.releaseDate || data?.firstAirDate
+                        ).format('YYYY')})`}</span>
+                      </Typography>
 
-                    <Stack justifyContent='flex-start' direction='row' color='#fff' spacing={1}>
-                      <Typography>{data?.genres.map((genre) => genre.name).join(', ')}</Typography>
-                      {query?.type === 'movie' && (
-                        <Typography
-                          sx={{
-                            position: 'relative',
-                            paddingLeft: '16px',
+                      <Stack justifyContent='flex-start' alignItems='center' direction='row' color='#fff' spacing={1}>
+                        <Typography>{data?.genres.map((genre) => genre.name).join(', ')}</Typography>
+                        {query?.type === 'movie' && (
+                          <Typography
+                            sx={{
+                              position: 'relative',
+                              paddingLeft: '16px',
 
-                            '&::before': {
-                              content: '""',
-                              width: '6px',
-                              height: '6px',
-                              position: 'absolute',
-                              background: '#fff',
-                              borderRadius: '100%',
-                              top: '50%',
-                              left: 0,
-                              transform: 'translateY(-50%)',
-                            },
-                          }}
-                        >
-                          {data?.runtime && getRuntime(data.runtime)}
+                              '&::before': {
+                                content: '""',
+                                width: '6px',
+                                height: '6px',
+                                position: 'absolute',
+                                background: '#fff',
+                                borderRadius: '100%',
+                                top: '50%',
+                                left: 0,
+                                transform: 'translateY(-50%)',
+                              },
+                            }}
+                          >
+                            {data?.runtime && getRuntime(data.runtime)}
+                          </Typography>
+                        )}
+                      </Stack>
+                    </Box>
+
+                    <Box component='div' mb={2}>
+                      <ActionList type={query?.type} id={query?.id} />
+                    </Box>
+
+                    <Box component='div' mb={2}>
+                      <Stack>
+                        <Typography fontSize='1.1rem' sx={{ opacity: 0.7, fontStyle: 'italic' }}>
+                          {data?.tagline}
                         </Typography>
-                      )}
-                    </Stack>
-                  </Box>
+                        <Typography variant='h3' fontSize='1.3rem' my='10px'>
+                          Overview
+                        </Typography>
+                        <Typography variant='body1'>{data?.overview}</Typography>
+                      </Stack>
+                    </Box>
 
-                  <Box component='div' mb={2}>
-                    <ActionList type={query?.type} id={query?.id} />
-                  </Box>
-
-                  <Box component='div' mb={2}>
-                    <Stack>
-                      <Typography fontSize='1.1rem' sx={{ opacity: 0.7, fontStyle: 'italic' }}>
-                        {data?.tagline}
-                      </Typography>
+                    <Box component='div'>
                       <Typography variant='h3' fontSize='1.3rem' my='10px'>
-                        Overview
+                        Top Billed Cast
                       </Typography>
-                      <Typography variant='body1'>{data?.overview}</Typography>
-                    </Stack>
-                  </Box>
-
-                  <Box component='div'>
-                    <Typography variant='h3' fontSize='1.3rem' my='10px'>
-                      Top Billed Cast
-                    </Typography>
-                    <CastsList type={query?.type} id={query?.id} />
-                  </Box>
-                </Stack>
-              </Stack>
+                      <CastsList type={query?.type} id={query?.id} />
+                    </Box>
+                  </Stack>
+                </Grid>
+              </Grid>
             </Container>
           </Box>
         </Box>
 
-        <Box component='div'>
+        <Box component='div' mt={3}>
           <Container maxWidth='lg'>
             <Box component='div'>
               <Typography variant='h3' fontSize='1.5rem' my='10px'>
@@ -148,8 +153,6 @@ function FilmDetailView() {
           </Container>
         </Box>
       </Box>
-
-      {/*<ModalWatchMovie open={open} handleClose={handleClose} type={query?.type} item={data} />*/}
     </>
   )
 }

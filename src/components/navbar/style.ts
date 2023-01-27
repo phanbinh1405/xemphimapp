@@ -64,3 +64,18 @@ export const OptionsContainer = styled.div`
   background-color: #032541;
   border-radius: 5px;
 `
+export const MenuContainer = styled.div`
+  display: flex;
+
+  @media (max-width: 480px) {
+    display: none;
+  }
+`
+
+export const HambugerButtonContainer = styled.div`
+  display: none;
+
+  @media (max-width: 480px) {
+    display: block;
+  }
+`

@@ -1,13 +1,33 @@
-import { Search } from '@mui/icons-material'
+import { Menu, Search } from '@mui/icons-material'
 import SearchIcon from '@mui/icons-material/Search'
-import { Autocomplete, Box, Button, Container, IconButton, Stack, TextField } from '@mui/material'
+import {
+  Autocomplete,
+  Box,
+  Container,
+  Drawer,
+  IconButton,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  Stack,
+  TextField,
+  Typography,
+} from '@mui/material'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
-import { useContext, useEffect, useState } from 'react'
+import { Router, useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 import useSWR from 'swr'
-import { AuthContext } from '../../context/AuthContext'
 import UserDropdown from '../userDropdown'
-import { LeftContainer, MenuItem, NavBar, NavBarInnerContainer, NavBarLogo } from './style'
+import {
+  HambugerButtonContainer,
+  LeftContainer,
+  MenuContainer,
+  MenuItem,
+  NavBar,
+  NavBarInnerContainer,
+  NavBarLogo,
+} from './style'
 
 interface OptionType {
   name: string
@@ -20,6 +40,8 @@ const Navbar = () => {
   const [filter, setFilter] = useState('')
   const [searchData, setSearchData] = useState('')
   const [isShowSearchBar, setShowSearchBar] = useState(false)
+  const [openDrawer, setOpenDrawer] = useState(false)
+
   useEffect(() => {
     window.addEventListener('scroll', () => {
       setIsScrolled(window.scrollY !== 0)
@@ -51,16 +73,30 @@ const Navbar = () => {
             <Link href={'/'} style={{ display: 'inline-flex' }}>
               <NavBarLogo src='/logo-full.png' alt='' width={100} height={25} />
             </Link>
-            <MenuItem href='/'>Homepage</MenuItem>
-            <MenuItem href='/catalog/tv'>TV Series</MenuItem>
-            <MenuItem href='/catalog/movie'>Movies</MenuItem>
+            <MenuContainer>
+              <MenuItem href={`/`}>
+                <Typography color={`${router.asPath === '/' && '#ff0000'}`}>Homepage</Typography>
+              </MenuItem>
+              <MenuItem href={`/catalog/tv`}>
+                <Typography color={`${router.asPath === '/catalog/tv' && '#ff0000'}`}>TV Series</Typography>
+              </MenuItem>
+              <MenuItem href={`/catalog/movie`}>
+                <Typography color={`${router.asPath === '/catalog/movie' && '#ff0000'}`}>Movies</Typography>
+              </MenuItem>
+            </MenuContainer>
           </LeftContainer>
-          <Stack component='div' direction='row' spacing={2}>
+          <Stack component='div' direction='row' spacing={2} alignItems='center'>
             <IconButton onClick={() => setShowSearchBar(!isShowSearchBar)}>
               <SearchIcon sx={{ color: '#fff' }} className='icon' />
             </IconButton>
 
             <UserDropdown />
+
+            <HambugerButtonContainer>
+              <IconButton sx={{ color: '#fff' }} onClick={() => setOpenDrawer(true)}>
+                <Menu color='inherit' />
+              </IconButton>
+            </HambugerButtonContainer>
           </Stack>
         </NavBarInnerContainer>
 
@@ -116,6 +152,32 @@ const Navbar = () => {
           </Box>
         )}
       </NavBar>
+
+      <Drawer anchor='right' open={openDrawer} onClose={() => setOpenDrawer(!openDrawer)}>
+        <List>
+          <ListItem disablePadding>
+            <ListItemButton sx={{ paddingInline: 4 }}>
+              <MenuItem href={`/`}>
+                <Typography color={`${router.asPath === '/' && '#ff0000'}`}>Homepage</Typography>
+              </MenuItem>
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton sx={{ paddingInline: 4 }}>
+              <MenuItem href={`/catalog/tv`}>
+                <Typography color={`${router.asPath === '/catalog/tv' && '#ff0000'}`}>TV Series</Typography>
+              </MenuItem>
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton sx={{ paddingInline: 4 }}>
+              <MenuItem href={`/catalog/movie`}>
+                <Typography color={`${router.asPath === '/catalog/movie' && '#ff0000'}`}>Movies</Typography>
+              </MenuItem>
+            </ListItemButton>
+          </ListItem>
+        </List>
+      </Drawer>
     </>
   )
 }
