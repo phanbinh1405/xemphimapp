@@ -2,6 +2,7 @@ import { Box, Container, Stack, Typography } from '@mui/material'
 import Grid from '@mui/material/Unstable_Grid2'
 import camelcaseKeys from 'camelcase-keys'
 import moment from 'moment'
+import { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
@@ -19,7 +20,7 @@ const getRuntime = (runtime: number) => {
   return `${hour > 0 ? `${hour}h` : ''}${min < 9 ? `0${min}` : min}m`
 }
 
-function FilmDetailView() {
+function FilmDetailView({ filmDetail }: { filmDetail: DetailMovie }) {
   const router = useRouter()
   const [query, setQuery] = useState<{ type: string; id: string } | null>(null)
 
@@ -29,7 +30,8 @@ function FilmDetailView() {
     detailQuery && setQuery({ type: detailQuery[0], id: detailQuery[1] })
   }, [detailQuery])
 
-  const { data } = useSWR<DetailMovie>(query ? `${query.type}/${query.id}` : null)
+  // const { data } = useSWR<DetailMovie>(query ? `${query.type}/${query.id}` : null)
+  const data = camelcaseKeys(filmDetail)
   const { data: recommend } = useSWR(query ? `${query.type}/${query.id}/recommendations` : null)
 
   return (
@@ -158,3 +160,17 @@ function FilmDetailView() {
 }
 
 export default FilmDetailView
+
+export async function getServerSideProps(context: any) {
+  const [type, id] = context.params.params
+
+  const filmDetail = await fetch(
+    `https://api.themoviedb.org/3/${type}/${id}?api_key=ca6836e856aeef031f2cd0392f38db46`
+  ).then((res) => res.json())
+
+  return {
+    props: {
+      filmDetail,
+    },
+  }
+}
