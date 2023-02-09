@@ -33,6 +33,13 @@ function FilmDetailView() {
 
   const { data: film } = useSWR<DetailMovie>(query ? `${query.type}/${query.id}` : null)
 
+  // const { data } = useSWR<DetailMovie>(query ? `${query?.type}/${query?.id}` : null)
+  // useEffect(() => {
+  //   if (data) {
+  //     setFilmDetail(data)
+  //   }
+  // }, [query])
+  // const film = camelcaseKeys(filmDetailData)
   const { data: recommend } = useSWR(query ? `${query.type}/${query.id}/recommendations` : null)
 
   return (
