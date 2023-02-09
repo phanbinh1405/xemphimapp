@@ -1,11 +1,12 @@
-import { Bookmark, Favorite, Star } from '@mui/icons-material'
+import { Bookmark, Favorite } from '@mui/icons-material'
 import { IconButton, Stack, Tooltip } from '@mui/material'
 import { useContext, useEffect, useState } from 'react'
-import useSWRMutation from 'swr/mutation'
+import { toast } from 'react-toastify'
 import useSWR from 'swr'
+import useSWRMutation from 'swr/mutation'
+import { TrendingItem } from '../../constants/types/trendingType'
 import { AuthContext } from '../../context/AuthContext'
 import axiosInstance from '../../utils/fetchWithTimeOut'
-import { TrendingItem } from '../../constants/types/trendingType'
 
 function ActionList({ type, id }: { type: string | undefined; id: string | undefined }) {
   const { profile } = useContext(AuthContext)
@@ -55,13 +56,17 @@ function ActionList({ type, id }: { type: string | undefined; id: string | undef
         <IconButton
           style={{ width: 46, height: 46, background: '#032541' }}
           onClick={() => {
-            triggerFavorite({
-              media_type: type,
-              media_id: id,
-              favorite: isFavorite ? false : true,
-            })
+            if (profile) {
+              triggerFavorite({
+                media_type: type,
+                media_id: id,
+                favorite: isFavorite ? false : true,
+              })
 
-            setFavorite(!isFavorite)
+              setFavorite(!isFavorite)
+            } else {
+              return toast.error('You need login to do this')
+            }
           }}
         >
           <Favorite style={{ color: isFavorite ? '#ef47b6' : '#fff' }} fontSize='small' />
@@ -71,12 +76,16 @@ function ActionList({ type, id }: { type: string | undefined; id: string | undef
         <IconButton
           style={{ width: 46, height: 46, background: '#032541' }}
           onClick={() => {
-            triggerWatchList({
-              media_type: type,
-              media_id: id,
-              favorite: isFavorite ? false : true,
-            })
-            setWatchList(!isInWatchList)
+            if (profile) {
+              triggerWatchList({
+                media_type: type,
+                media_id: id,
+                favorite: isFavorite ? false : true,
+              })
+              setWatchList(!isInWatchList)
+            } else {
+              return toast.error('You need login to do this')
+            }
           }}
         >
           <Bookmark style={{ color: isInWatchList ? '#cf3131' : '#fff' }} fontSize='small' />

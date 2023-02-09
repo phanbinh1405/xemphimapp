@@ -8,6 +8,8 @@ import { SWRConfig } from 'swr'
 import axiosInstance from '../utils/fetchWithTimeOut'
 import camelcaseKeys from 'camelcase-keys'
 import AuthContextProvider from '../context/AuthContext'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -24,6 +26,7 @@ export default function App({ Component, pageProps }: AppProps) {
           >
             <UserLayout>
               <Component {...pageProps} />
+              <ToastContainer />
             </UserLayout>
           </SWRConfig>
         </ThemeProvider>

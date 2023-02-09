@@ -57,8 +57,7 @@ function AuthContextProvider({ children }: { children: ReactNode }) {
     const getProfile = async () => {
       try {
         const res = await axiosInstance(`account?session_id=${sessionId}`)
-
-        if (res.status === 200) {
+        if (res.status === 200 && sessionId) {
           setProfile(res.data)
         }
       } catch (err) {
@@ -100,6 +99,7 @@ function AuthContextProvider({ children }: { children: ReactNode }) {
     setSessionId('')
     setRequestToken('')
     setAuthenticated(false)
+    router.push('/')
   }
 
   return <AuthContext.Provider value={{ profile, isAuthenticated, reset }}>{children}</AuthContext.Provider>
